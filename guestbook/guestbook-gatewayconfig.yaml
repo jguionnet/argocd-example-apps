@@ -5,15 +5,11 @@ metadata:
 spec:
   profiles:
   - name: Default
-  - name: Internal
-    internal_only: true
-  - name: Ignore_BUILD_TIME // only used to force gateway reconciliation
   path_configs:
-  - name: Internal
+  - name: Default
     paths:
     - /
     profiles:
-    - Internal
+    - Default
   service_ref: guestbook-ui
-  service_alias: ${GATEWAY_SERVICE_ALIAS}
-  enable_service_verification: false
+
