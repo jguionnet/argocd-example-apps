@@ -1,0 +1,19 @@
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
+metadata:
+  name: guestbook-ui
+spec:
+  profiles:
+  - name: Default
+  - name: Internal
+    internal_only: true
+  - name: Ignore_BUILD_TIME // only used to force gateway reconciliation
+  path_configs:
+  - name: Internal
+    paths:
+    - /
+    profiles:
+    - Internal
+  service_ref: guestbook-ui
+  service_alias: ${GATEWAY_SERVICE_ALIAS}
+  enable_service_verification: false
